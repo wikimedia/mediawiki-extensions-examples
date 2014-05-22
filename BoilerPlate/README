@@ -6,4 +6,4 @@ following commands to make a clean directory of just this template without the
 Git meta-data and other examples.
 
 	git clone https://gerrit.wikimedia.org/r/p/mediawiki/extensions/examples.git mw-extensions-example-repo
-	cp -R mw-extensions-example-repo/BoilerTemplate ./MyExtension
+	cp -R mw-extensions-example-repo/BoilerPlate ./MyExtension
