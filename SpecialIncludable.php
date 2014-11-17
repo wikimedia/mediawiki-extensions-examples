@@ -31,15 +31,13 @@ class SpecialIncludable extends IncludableSpecialPage {
 	 * Show the page
 	 */
 	public function execute( $par = null ) {
-		global $wgOut;
-		
-		if ( $this->including() )
+		if ( $this->including() ) {
 			$out = "I'm being included";
-		else {
+		} else {
 			$out = "I'm being viewed as a Special Page";
 			$this->setHeaders();
 		}
 
-		$wgOut->addWikiText( $out );
+		$this->getOutput()->addWikiText( $out );
 	}
 }
