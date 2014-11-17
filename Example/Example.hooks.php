@@ -79,9 +79,7 @@ class ExampleHooks {
 	 * This registers our database schema update(s)
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater ) {
-		$dir = dirname( __FILE__ );
-
-		$updater->addExtensionTable( 'example_note', "$dir/sql/add-example_note.sql" );
+		$updater->addExtensionTable( 'example_note', __DIR__ . '/sql/add-example_note.sql' );
 
 		return true;
 	}
