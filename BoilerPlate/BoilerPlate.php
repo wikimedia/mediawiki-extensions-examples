@@ -19,6 +19,7 @@ $wgExtensionCredits['other'][] = array(
 	'version'  => '0.2.0',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:BoilerPlate',
 	'descriptionmsg' => 'boilerplate-desc',
+	'license' => 'GPLv2+',
 );
 
 /* Setup */
