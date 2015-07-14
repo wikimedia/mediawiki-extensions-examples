@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"TomT0m"
 		]
 	},
 	"boilerplate-desc": "Voici un exemple d'extension",
-	"boilerplate-i18n-welcome": "Bienvenue dans le fichier de localisation de l'extension passepartout."
+	"boilerplate-i18n-welcome": "Bienvenue dans le fichier de localisation de l'extension passepartout.",
+	"boilerplate-helloworld": "Bonjour, le monde!",
+	"helloworld": "HelloWorld"
 }
