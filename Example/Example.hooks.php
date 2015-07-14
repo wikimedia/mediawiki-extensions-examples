@@ -44,7 +44,7 @@ class ExampleHooks {
 		// Add the following to a wiki page to see how it works:
 		//  <dump>test</dump>
 		//  <dump foo="bar" baz="quux">test content</dump>
-		$parser->setHook( 'dump' , 'ExampleHooks::parserTagDump' );
+		$parser->setHook( 'dump', 'ExampleHooks::parserTagDump' );
 
 		// Add the following to a wiki page to see how it works:
 		//  {{#echo: hello }}
@@ -115,7 +115,9 @@ class ExampleHooks {
 
 		// Very important to escape user data with htmlspecialchars() to prevent
 		// an XSS security vulnerability.
-		$html = '<pre>Dump Tag: ' . htmlspecialchars( FormatJson::encode( $dump, /*prettyPrint=*/true ) ) . '</pre>';
+		$html = '<pre>Dump Tag: '
+			. htmlspecialchars( FormatJson::encode( $dump, /*prettyPrint=*/true ) )
+			. '</pre>';
 
 		return $html;
 	}
@@ -147,6 +149,8 @@ class ExampleHooks {
 			'arguments' => $args,
 		);
 
-		return '<pre>Showme Function: ' . htmlspecialchars( FormatJson::encode( $showme, /*prettyPrint=*/true ) ) . '</pre>';
+		return '<pre>Showme Function: '
+			. htmlspecialchars( FormatJson::encode( $showme, /*prettyPrint=*/true ) )
+			. '</pre>';
 	}
 }

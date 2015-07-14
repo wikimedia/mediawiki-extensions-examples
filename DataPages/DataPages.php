@@ -21,7 +21,7 @@
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
-	echo( "This file is an extension to the MediaWiki software and cannot be used on its own.\n" );
+	echo "This file is an extension to the MediaWiki software and cannot be used on its own.\n";
 	die( 1 );
 }
 
