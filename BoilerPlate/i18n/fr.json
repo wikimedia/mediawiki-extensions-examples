@@ -8,5 +8,6 @@
 	"boilerplate-desc": "Voici un exemple d'extension",
 	"boilerplate-i18n-welcome": "Bienvenue dans le fichier de localisation de l'extension passepartout.",
 	"boilerplate-helloworld": "Bonjour, le monde!",
+	"boilerplate-helloworld-intro": "Bienvenue sur la page spéciale \"Hello world\" de l'extension BoilerPlate.",
 	"helloworld": "HelloWorld"
 }
