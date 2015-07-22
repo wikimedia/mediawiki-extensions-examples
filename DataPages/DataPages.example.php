@@ -5,7 +5,7 @@
 //////////////////////////////////////////////////////////////
 
 // load the extension
-require_once( $IP . '/extensions/examples/DataPages/DataPages.php' );
+require_once $IP . '/extensions/examples/DataPages/DataPages.php';
 
 // Define a custom namespace for XML.
 // If your extension is going to use an extra namespace,

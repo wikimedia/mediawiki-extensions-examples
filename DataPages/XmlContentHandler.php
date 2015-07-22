@@ -1,5 +1,5 @@
 <?php
- /**
+/**
  *
  * Copyright © 25.05.13 by the authors listed below.
  *
