@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"DCamer"
-		]
-	},
-	"boilerplate-desc": "Это пример расширения",
-	"boilerplate-i18n-welcome": "Добро пожаловать в файл локализации расширения BoilerPlate."
-}

@@ -1,6 +1,6 @@
 <?php
 /**
- * Example extension - based on the BoilerPlate
+ * Example extension - based on the stripped-down extensions/BoilerPlate
  *
  * For more info see mediawiki.org/wiki/Extension:Example
  *
