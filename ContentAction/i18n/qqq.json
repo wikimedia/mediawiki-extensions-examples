@@ -1,0 +1,7 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"contentaction-desc": "{{desc|what=extension|name=ContentAction|url=}}",
+	"contentaction-myact": "This is a message that is saying my action."
+}
