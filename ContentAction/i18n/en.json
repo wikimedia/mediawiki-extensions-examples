@@ -1,7 +1,7 @@
 {
-    "@metadata": {
-        "authors": []
-    },
-    "contentaction-desc": "Adds a new tab to each page",
-    "contentaction-myact": "My action"
+	"@metadata": {
+		"authors": []
+	},
+	"contentaction-desc": "Adds a new tab to each page",
+	"contentaction-myact": "My action"
 }
