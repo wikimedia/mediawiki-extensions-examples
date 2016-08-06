@@ -8,41 +8,32 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$wgExtensionCredits['other'][] = array(
-	'path' => __FILE__,
-	'name' => 'Content action hook',
-	'author' => 'Ævar Arnfjörð Bjarmason',
-	'descriptionmsg' => 'contentaction-desc',
-);
+class ContentAction {
 
-$wgHooks['UnknownAction'][] = 'wfAddactActionHook';
-$wgHooks['SkinTemplateNavigation'][] = 'wfAddactionContentHook';
+	public static function onSkinTemplateNavigation( $skin, &$content_actions ) {
+		$action = $skin->getRequest->getText( 'action' );
 
-$wgMessagesDirs['ContentAction'] = __DIR__ . '/i18n';
+		if ( $skin->getTitle()->getNamespace() != NS_SPECIAL ) {
+			$content_actions['actions']['myact'] = array(
+				'class' => $action === 'myact' ? 'selected' : false,
+				'text' => wfMessage( 'contentaction-myact' )->text(),
+				'href' => $skin->getTitle()->getLocalUrl( 'action=myact' )
+			);
+		}
 
-function wfAddActionContentHook( $skin, &$content_actions ) {
-	$action = $skin->getRequest->getText( 'action' );
-
-	if ( $skin->getTitle()->getNamespace() != NS_SPECIAL ) {
-		$content_actions['actions']['myact'] = array(
-			'class' => $action === 'myact' ? 'selected' : false,
-			'text' => wfMessage( 'contentaction-myact' )->text(),
-			'href' => $skin->getTitle()->getLocalUrl( 'action=myact' )
-		);
+		return true;
 	}
 
-	return true;
-}
+	public static function onUnknownAction( $action, $article ) {
+		$title = $article->getTitle();
 
-function wfAddactActionHook( $action, $article ) {
-	$title = $article->getTitle();
+		if ( $action === 'myact' ) {
+			$article->getContext()->getOutput()->addWikiText(
+				'The page name is ' . $title->getText() . ' and you are ' . $article->getUserText()
+			);
+			return false;
+		}
 
-	if ( $action === 'myact' ) {
-		$article->getContext()->getOutput()->addWikiText(
-			'The page name is ' . $title->getText() . ' and you are ' . $article->getUserText()
-		);
-		return false;
+		return true;
 	}
-
-	return true;
 }

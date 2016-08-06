@@ -1,0 +1,19 @@
+{
+	"name": "Content action hook",
+	"author": "Ævar Arnfjörð Bjarmason",
+	"descriptionmsg": "contentaction-desc",
+	"type": "other",
+	"MessagesDirs": {
+		"ContentAction": [
+			"i18n"
+		]
+	},
+	"Hooks": {
+		"UnknownAction": "ContentAction::onUnknownAction",
+		"SkinTemplateNavigation": "ConentAction::onSkinTemplateNavigation"
+	},
+	"AutoloadClasses": {
+		"ContentAction": "ContentAction.php"
+	},
+	"manifest_version": 2
+}
