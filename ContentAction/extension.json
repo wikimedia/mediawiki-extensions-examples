@@ -9,11 +9,13 @@
 		]
 	},
 	"Hooks": {
-		"UnknownAction": "ContentAction::onUnknownAction",
-		"SkinTemplateNavigation": "ConentAction::onSkinTemplateNavigation"
+		"SkinTemplateNavigation": "ContentAction::onSkinTemplateNavigation"
 	},
 	"AutoloadClasses": {
 		"ContentAction": "ContentAction.php"
+	},
+	"Actions": {
+		"myact": "ContentAction"
 	},
 	"manifest_version": 2
 }

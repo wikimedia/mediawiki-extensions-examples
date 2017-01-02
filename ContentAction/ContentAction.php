@@ -8,10 +8,9 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-class ContentAction {
-
+class ContentAction extends FormlessAction {
 	public static function onSkinTemplateNavigation( $skin, &$content_actions ) {
-		$action = $skin->getRequest->getText( 'action' );
+		$action = $skin->getRequest()->getText( 'action' );
 
 		if ( $skin->getTitle()->getNamespace() != NS_SPECIAL ) {
 			$content_actions['actions']['myact'] = array(
@@ -23,17 +22,16 @@ class ContentAction {
 
 		return true;
 	}
-
-	public static function onUnknownAction( $action, $article ) {
-		$title = $article->getTitle();
-
-		if ( $action === 'myact' ) {
-			$article->getContext()->getOutput()->addWikiText(
-				'The page name is ' . $title->getText() . ' and you are ' . $article->getUserText()
-			);
-			return false;
-		}
-
-		return true;
+	public function getName() {
+		return 'myact';
 	}
+	public function onView() {
+	}
+
+	public function show() {
+		$this->getContext()->getOutput()->addWikiText(
+			'The page name is ' . $this->getTitle()->getText() . ' and you are ' . $this->getUser()->getName()
+		);
+	}
+
 }
