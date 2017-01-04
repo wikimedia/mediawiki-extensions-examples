@@ -1,7 +1,8 @@
 {
-	"name": "Content action hook",
+	"name": "Content action example",
 	"author": "Ævar Arnfjörð Bjarmason",
 	"descriptionmsg": "contentaction-desc",
+	"url": "https://www.mediawiki.org/wiki/Extension:Example",
 	"type": "other",
 	"MessagesDirs": {
 		"ContentAction": [
@@ -9,10 +10,11 @@
 		]
 	},
 	"Hooks": {
-		"SkinTemplateNavigation": "ContentAction::onSkinTemplateNavigation"
+		"SkinTemplateNavigation": "ContentActionHooks::onSkinTemplateNavigation"
 	},
 	"AutoloadClasses": {
-		"ContentAction": "ContentAction.php"
+		"ContentAction": "ContentAction.php",
+		"ContentActionHooks": "ContentAction.hooks.php"
 	},
 	"Actions": {
 		"myact": "ContentAction"

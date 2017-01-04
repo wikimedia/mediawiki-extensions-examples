@@ -2,6 +2,6 @@
 	"@metadata": {
 		"authors": []
 	},
-	"contentaction-desc": "Adds a new tab to each page",
+	"contentaction-desc": "Registers a new page action",
 	"contentaction-myact": "My action"
 }
