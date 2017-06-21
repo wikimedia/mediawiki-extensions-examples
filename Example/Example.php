@@ -71,7 +71,7 @@ $dirbasename = basename( $dir );
 
 // Register files
 // MediaWiki need to know which PHP files contains your class. It has a
-// registering mecanism to append to the internal autoloader. Simply use
+// registering mechanism to append to the internal autoloader. Simply use
 // $wgAutoLoadClasses as below:
 $wgAutoloadClasses['ExampleHooks'] = $dir . '/Example.hooks.php';
 $wgAutoloadClasses['SpecialHelloWorld'] = $dir . '/specials/SpecialHelloWorld.php';
@@ -136,7 +136,8 @@ $wgResourceModules['ext.Example.welcome.init'] = array(
 /* Configuration */
 
 
-/** Your extension configuration settings. Since they are going to be global
+/**
+ * Your extension configuration settings. Since they are going to be global
  * always use a "wg" prefix + your extension name + your setting key.
  * The entire variable name should use "lowerCamelCase".
  */
