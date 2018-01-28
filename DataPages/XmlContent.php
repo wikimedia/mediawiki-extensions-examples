@@ -23,6 +23,15 @@
  *
  * @author Daniel Kinzler
  */
+namespace MediaWiki\Extension\Examples\DataPages;
+
+use Content;
+use ParserOptions;
+use Status;
+use TextContent;
+use Title;
+use User;
+use WikiPage;
 
 /**
  * Class XmlContent represents XML content.
@@ -45,7 +54,7 @@
  *
  * @package DataPages
  */
-class XmlContent extends \TextContent {
+class XmlContent extends TextContent {
 
 	public function __construct( $text, $model_id = CONTENT_MODEL_XML_DATA ) {
 		parent::__construct( $text, $model_id );

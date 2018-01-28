@@ -23,6 +23,11 @@
  *
  * @author Daniel Kinzler
  */
+namespace MediaWiki\Extension\Examples\DataPages;
+
+use Content;
+use IContextSource;
+use TextContentHandler;
 
 /**
  * Class XmlContentHandler represents the set of operations for XMLContent that can be
@@ -35,7 +40,7 @@
  *
  * @package DataPages
  */
-class XmlContentHandler extends \TextContentHandler {
+class XmlContentHandler extends TextContentHandler {
 
 	public function __construct(
 		$modelId = CONTENT_MODEL_XML_DATA,
