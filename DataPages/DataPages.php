@@ -29,11 +29,11 @@ if ( version_compare( $wgVersion, '1.21', '<' ) ) {
 	die( "This extension requires MediaWiki 1.21+\n" );
 }
 
-$wgExtensionCredits['other'][] = array(
+$wgExtensionCredits['other'][] = [
 	'path' => __FILE__,
 	'name' => 'DataPages',
 	'author' => 'Daniel Kinzler',
-);
+];
 
 $wgAutoloadClasses['XmlContentHandler'] = __DIR__ . '/XmlContentHandler.php';
 $wgAutoloadClasses['XmlContent'] = __DIR__ . '/XmlContent.php';

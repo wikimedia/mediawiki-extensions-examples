@@ -24,7 +24,6 @@
  * @author Daniel Kinzler
  */
 
-
 /**
  * Class XmlContentHandler represents the set of operations for XMLContent that can be
  * performed without the actual content. Most importantly, it acts as a factory
@@ -40,7 +39,7 @@ class XmlContentHandler extends \TextContentHandler {
 
 	public function __construct(
 		$modelId = CONTENT_MODEL_XML_DATA,
-		$formats = array( CONTENT_FORMAT_XML )  // XML is supported as a serialization format by default
+		$formats = [ CONTENT_FORMAT_XML ]  // XML is supported as a serialization format by default
 	) {
 		parent::__construct( $modelId, $formats );
 	}

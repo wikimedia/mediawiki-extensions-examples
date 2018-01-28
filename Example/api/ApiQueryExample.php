@@ -22,7 +22,7 @@ class ApiQueryExample extends ApiQueryBase {
 		global $wgExampleFooStuff;
 		$params = $this->extractRequestParams();
 
-		$stuff = array();
+		$stuff = [];
 
 		// This is a filtered request, only show this key if it exists,
 		// (or none, if it doesn't exist)
@@ -38,24 +38,24 @@ class ApiQueryExample extends ApiQueryBase {
 			$stuff = $wgExampleFooStuff;
 		}
 
-		$r = array( 'stuff' => $stuff );
+		$r = [ 'stuff' => $stuff ];
 		$this->getResult()->addValue( null, $this->getModuleName(), $r );
 	}
 
 	public function getAllowedParams() {
-		return array(
-			'key' => array(
+		return [
+			'key' => [
 				ApiBase::PARAM_TYPE => 'string',
-			),
-		);
+			],
+		];
 	}
 
 	protected function getExamplesMessages() {
-		return array(
+		return [
 			'action=query&list=example'
 				=> 'apihelp-query+example-example-1',
 			'action=query&list=example&key=do'
 				=> 'apihelp-query+example-example-2',
-		);
+		];
 	}
 }

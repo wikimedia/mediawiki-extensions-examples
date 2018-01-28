@@ -12,12 +12,12 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$wgExtensionCredits['specialpage'][] = array(
+$wgExtensionCredits['specialpage'][] = [
 	'path' => __FILE__,
 	'name' => 'Includable',
 	'description' => 'a sample includable Special Page',
 	'author' => 'Ævar Arnfjörð Bjarmason'
-);
+];
 
 $wgSpecialPages['Includable'] = 'SpecialIncludable';
 

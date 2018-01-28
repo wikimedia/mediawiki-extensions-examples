@@ -16,11 +16,11 @@ class ContentActionHooks {
 		$action = $skin->getRequest()->getText( 'action' );
 
 		if ( $skin->getTitle()->getNamespace() != NS_SPECIAL ) {
-			$content_actions['actions']['myact'] = array(
+			$content_actions['actions']['myact'] = [
 				'class' => $action === 'myact' ? 'selected' : false,
 				'text' => wfMessage( 'contentaction-myact' )->text(),
 				'href' => $skin->getTitle()->getLocalUrl( 'action=myact' )
-			);
+			];
 		}
 	}
 }

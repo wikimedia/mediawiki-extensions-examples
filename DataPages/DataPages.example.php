@@ -12,7 +12,7 @@ require_once $IP . '/extensions/examples/DataPages/DataPages.php';
 // you should list the suggested default at
 // <http://www.mediawiki.org/wiki/Extension_default_namespaces>.
 define( 'NS_XML', 234 );
-define( 'NS_XML_TALK', NS_XML +1 );
+define( 'NS_XML_TALK', NS_XML + 1 );
 
 $wgExtraNamespaces[ NS_XML ] = 'XML';
 $wgExtraNamespaces[ NS_XML_TALK ] = 'XML_Talk';

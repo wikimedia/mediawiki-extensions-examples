@@ -6,18 +6,18 @@
  * @ingroup Extensions
  */
 
-$magicWords = array();
+$magicWords = [];
 
 /** English (English) */
-$magicWords['en'] = array(
-	'echo' => array( 0, 'echo' ),
-	'showme' => array( 0, 'showme' ),
-	'myword' => array( 0, 'MYWORD' ),
-);
+$magicWords['en'] = [
+	'echo' => [ 0, 'echo' ],
+	'showme' => [ 0, 'showme' ],
+	'myword' => [ 0, 'MYWORD' ],
+];
 
 /** Dutch (Nederlands) */
-$magicWords['nl'] = array(
-	'echo' => array( 0, 'echo' ),
-	'showme' => array( 0, 'laatzien' ),
-	'myword' => array( 0, 'MIJNWOORD' ),
-);
+$magicWords['nl'] = [
+	'echo' => [ 0, 'echo' ],
+	'showme' => [ 0, 'laatzien' ],
+	'myword' => [ 0, 'MIJNWOORD' ],
+];

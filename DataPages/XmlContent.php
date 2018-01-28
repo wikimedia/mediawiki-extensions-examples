@@ -24,7 +24,6 @@
  * @author Daniel Kinzler
  */
 
-
 /**
  * Class XmlContent represents XML content.
  *
@@ -98,7 +97,7 @@ class XmlContent extends \TextContent {
 		// NOTE: For checking even on preview, we'd need a custom editor.
 		// A nicer way to do this might be added to the ContentHandler facility in the future.
 
-		libxml_use_internal_errors ( true );
+		libxml_use_internal_errors( true );
 		$doc = simplexml_load_string( $this->getNativeData() );
 
 		$errors = libxml_get_errors();
@@ -111,7 +110,9 @@ class XmlContent extends \TextContent {
 			$param1 = array_reduce( // fancy way to concatenate the messages from LibXMLError objects
 				$errors,
 				function ( $msg, $error ) {
-					if ( $msg !== '' ) $msg .= '; ';
+					if ( $msg !== '' ) {
+						$msg .= '; ';
+					}
 					$msg .= "line " . $error->line . ": " . $error->message;
 					return $msg;
 				},

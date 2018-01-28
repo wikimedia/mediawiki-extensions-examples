@@ -6,14 +6,14 @@
  * @ingroup Extensions
  */
 
-$specialPageAliases = array();
+$specialPageAliases = [];
 
 /** English (English) */
-$specialPageAliases['en'] = array(
-	'HelloWorld' => array( 'HelloWorld' ),
-);
+$specialPageAliases['en'] = [
+	'HelloWorld' => [ 'HelloWorld' ],
+];
 
 /** Dutch (Nederlands) */
-$specialPageAliases['nl'] = array(
-	'HelloWorld' => array( 'HalloWereld' ),
-);
+$specialPageAliases['nl'] = [
+	'HelloWorld' => [ 'HalloWereld' ],
+];

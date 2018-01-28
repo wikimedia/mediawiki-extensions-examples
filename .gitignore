@@ -1,6 +1,3 @@
-.*.swp
-*~
-.project
-composer.lock
-vendor
-node_modules
+/composer.lock
+/vendor/
+/node_modules/

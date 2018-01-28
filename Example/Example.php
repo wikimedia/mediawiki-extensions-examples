@@ -37,7 +37,7 @@
  * expose to MediaWiki metadata about your extension. For additional
  * documentation, see its documentation block in includes/DefaultSettings.php
  */
-$wgExtensionCredits['other'][] = array(
+$wgExtensionCredits['other'][] = [
 	'path' => __FILE__,
 
 	// Name of your Extension:
@@ -46,11 +46,11 @@ $wgExtensionCredits['other'][] = array(
 	// Sometime other patches contributors and minor authors are not worth
 	// mentionning, you can use the special case '...' to output a localised
 	// message 'and others...'.
-	'author' => array(
+	'author' => [
 		'Jane Doe',
 		'George Foo',
 		'...'
-	),
+	],
 
 	'version'  => '0.1.0',
 
@@ -58,15 +58,14 @@ $wgExtensionCredits['other'][] = array(
 	// your extension homepage.
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Example',
 
-
 	# Key name of the message containing the description.
 	'descriptionmsg' => 'example-desc',
-);
+];
 
 /* Setup */
 
 // Initialize an easy to use shortcut:
-$dir = dirname( __FILE__ );
+$dir = __DIR__;
 $dirbasename = basename( $dir );
 
 // Register files
@@ -100,41 +99,40 @@ $wgSpecialPages['HelloWorld'] = 'SpecialHelloWorld';
 // See also http://www.mediawiki.org/wiki/Manual:$wgResourceModules
 // ResourceLoader modules are the de facto standard way to easily
 // load JavaScript and CSS files to the client.
-$wgResourceModules['ext.Example.welcome'] = array(
-	'scripts' => array(
+$wgResourceModules['ext.Example.welcome'] = [
+	'scripts' => [
 		'modules/ext.Example.welcome.js',
-	),
-	'styles' => array(
+	],
+	'styles' => [
 		'modules/ext.Example.welcome.css',
-	),
-	'messages' => array(
+	],
+	'messages' => [
 		'example-welcome-title-loggedout',
 		'example-welcome-title-user',
 		'example-welcome-color-label',
 		'example-welcome-color-value',
-	),
-	'dependencies' => array(
+	],
+	'dependencies' => [
 		'mediawiki.util',
 		'mediawiki.user',
 		'mediawiki.Title',
-	),
+	],
 
 	'localBasePath' => $dir,
 	'remoteExtPath' => 'examples/' . $dirbasename,
-);
+];
 
-$wgResourceModules['ext.Example.welcome.init'] = array(
+$wgResourceModules['ext.Example.welcome.init'] = [
 	'scripts' => 'modules/ext.Example.welcome.init.js',
-	'dependencies' => array(
+	'dependencies' => [
 		'ext.Example.welcome',
-	),
+	],
 
 	'localBasePath' => $dir,
 	'remoteExtPath' => 'examples/' . $dirbasename,
-);
+];
 
 /* Configuration */
-
 
 /**
  * Your extension configuration settings. Since they are going to be global
@@ -149,13 +147,13 @@ $wgExampleEnableWelcome = true;
 // Color map for the Welcome feature
 $wgExampleWelcomeColorDefault = '#eee';
 // Days not defined here fall back to the default
-$wgExampleWelcomeColorDays = array(
+$wgExampleWelcomeColorDays = [
 	'Monday' => 'orange',
 	'Tuesday' => 'blue',
 	'Wednesday' => 'green',
 	'Thursday' => 'red',
 	'Friday' => 'yellow',
-);
+];
 
 // Value of {{MYWORD}} constant
 $wgExampleMyWord = 'Awesome';
