@@ -28,7 +28,7 @@
  * @version 1.0
  *
  * The license governing the extension code:
- * @license GNU General Public Licence 2.0 or later
+ * @license GPL-2.0-or-later
  */
 
 /**
