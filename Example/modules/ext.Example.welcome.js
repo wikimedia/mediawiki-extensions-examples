@@ -10,7 +10,7 @@
 	 * Note that the range is 0-6, where 0 = Sunday.
 	 * See also https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date/getDay
 	 */
-	dayMap = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+	dayMap = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
 
 	welcome = {
 		init: function () {
@@ -19,7 +19,7 @@
 			$box = $( '<div class="mw-example-welcome"></div>' ).append(
 				$( '<h4>', {
 					text: mw.user.isAnon() ?
-						mw.msg( 'example-welcome-title-loggedout') :
+						mw.msg( 'example-welcome-title-loggedout' ) :
 						mw.msg( 'example-welcome-title-user', mw.user.getName() )
 				} )
 			);
@@ -50,16 +50,18 @@
 		 * Get the color associated with the given date's day.
 		 * If no color is assigned to this day, the default will be used instead.
 		 *
-		 * @param Date d: Instance of Date to use to get the correct color.
+		 * @param {Date} d Instance of Date to use to get the correct color.
+		 *
+		 * @return {string} wgExampleWelcomeColorDefault Global variable
 		 */
 		getColorByDate: function ( d ) {
 			var days, day;
 
-			day = dayMap[d.getDay()];
+			day = dayMap[ d.getDay() ];
 			days = mw.config.get( 'wgExampleWelcomeColorDays' );
 
-			if ( day && days[day] !== undefined ) {
-				return days[day];
+			if ( day && days[ day ] !== undefined ) {
+				return days[ day ];
 			}
 
 			return mw.config.get( 'wgExampleWelcomeColorDefault' );
