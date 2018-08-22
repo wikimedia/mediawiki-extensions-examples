@@ -1,0 +1,18 @@
+{
+	"name": "examples",
+	"version": "0.2.0",
+	"author": [
+        "Timo Tijhof",
+        "Kaldari",
+        "Derick N. Alangi"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:Example",
+	"descriptionmsg": "examples-desc",
+	"license-name": "GPL-2.0-or-later",
+	"MessagesDirs": {
+		"examples": [
+			"Example/i18n"
+		]
+	},
+	"manifest_version": 2
+}
