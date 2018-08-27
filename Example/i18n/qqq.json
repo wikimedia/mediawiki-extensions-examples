@@ -3,10 +3,8 @@
 		"authors": []
 	},
 	"example-desc": "{{desc}}",
-	"example-welcome-title-user": "Title of the Welcome interface for logged-in users. $1 is the username.",
-	"example-welcome-title-loggedout": "Title of the Welcome interface logged-out users.",
-	"example-welcome-color-label": "Label for today's color.",
-	"example-welcome-color-value": "The actual color, by default plainly added by parameter. \n\nParameters:\n* $1 - value name of the color.",
+	"example-welcome-title-user": "Title of the Welcome interface for logged-in users. $1 is the username. $2 is the weekday.",
+	"example-welcome-title-loggedout": "Title of the Welcome interface logged-out users. $1 is the weekday.",
 	"example-helloworld": "Title of Special:HelloWorld.",
 	"example-helloworld-intro": "Intro paragraph shown on Special:HelloWorld.",
 	"apihelp-query+example-summary": "{{doc-apihelp-summary|query+example}}",

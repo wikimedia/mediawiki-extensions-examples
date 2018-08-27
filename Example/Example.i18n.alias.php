@@ -1,9 +1,8 @@
 <?php
 /**
- * Aliases for special pages of the Example extension
+ * Aliases for special pages.
  *
  * @file
- * @ingroup Extensions
  */
 
 $specialPageAliases = [];
@@ -11,6 +10,7 @@ $specialPageAliases = [];
 /** English (English) */
 $specialPageAliases['en'] = [
 	'HelloWorld' => [ 'HelloWorld' ],
+	'Includable' => [ 'Includable' ],
 ];
 
 /** Dutch (Nederlands) */

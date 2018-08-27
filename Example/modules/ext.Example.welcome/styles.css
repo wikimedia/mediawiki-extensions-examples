@@ -1,0 +1,31 @@
+/**
+ * Stylesheet for the Welcome feature.
+ */
+
+.mw-welcome-bar-parent {
+	position: relative;
+}
+
+.mw-welcome-bar {
+	position: absolute;
+	bottom: 100%;
+	left: -1em;
+	display: block;
+	background-color: #fff;
+	border: 0.5em solid #eee;
+	padding: 0.5em;
+	font-size: 1rem;
+}
+
+.mw-welcome-bar:after {
+	position: absolute;
+	right: -1em;
+	top: -1em;
+	background-color: #f9f9f9;
+	border: 1px solid #eee;
+	padding: 0.2em 0.3em;
+	border-color: inherit;
+	content: attr( data-welcome-color );
+	font-family: monospace, monospace;
+	font-size: 0.7rem;
+}

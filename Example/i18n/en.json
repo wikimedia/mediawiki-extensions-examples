@@ -3,10 +3,8 @@
 		"authors": []
 	},
 	"example-desc": "This is an example extension using the BoilerPlate.",
-	"example-welcome-title-user": "Howdy, $1!",
-	"example-welcome-title-loggedout": "Hi there!",
-	"example-welcome-color-label": "Today's color:",
-	"example-welcome-color-value": "$1",
+	"example-welcome-title-user": "Howdy $1, today is a fine $2!",
+	"example-welcome-title-loggedout": "Hi there, today is a fine $2!",
 	"example-helloworld": "Bar",
 	"example-helloworld-intro": "This is the HelloWorld special page, as provided by the Example extension.",
 	"apihelp-query+example-summary": "Get information about foo.",

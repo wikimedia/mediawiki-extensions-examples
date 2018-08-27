@@ -1,91 +1,84 @@
 <?php
 /**
- * Hooks for Example extension
+ * Hooks for Example extension.
  *
  * @file
- * @ingroup Extensions
  */
 
-class ExampleHooks {
+namespace MediaWiki\Extension\Example;
+
+use OutputPage;
+use Skin;
+use Parser;
+use DatabaseUpdater;
+
+class Hooks {
 	/**
-	 * Add welcome module to the load queue of all pages
+	 * Customisations to OutputPage right before page display.
+	 *
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/BeforePageDisplay
 	 */
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
 		global $wgExampleEnableWelcome;
 
 		if ( $wgExampleEnableWelcome ) {
-			$out->addModules( 'ext.Example.welcome.init' );
+			// Load our module on all pages
+			$out->addModules( 'ext.Example.welcome' );
 		}
-
-		// Always return true, indicating that parser initialization should
-		// continue normally.
-		return true;
 	}
 
 	/**
-	 * Expose configuration variables through mw.config in javascript.
+	 * Register parser hooks.
+	 *
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserFirstCallInit
+	 * @see https://www.mediawiki.org/wiki/Manual:Parser_functions
 	 */
-	public static function onResourceLoaderGetConfigVars( &$vars ) {
-		global $wgExampleEnableWelcome, $wgExampleWelcomeColorDefault, $wgExampleWelcomeColorDays;
-
-		if ( $wgExampleEnableWelcome ) {
-			$vars['wgExampleWelcomeColorDefault'] = $wgExampleWelcomeColorDefault;
-			$vars['wgExampleWelcomeColorDays'] = $wgExampleWelcomeColorDays;
-		}
-
-		return true;
-	}
-
-	/**
-	 * Register parser hooks
-	 * See also http://www.mediawiki.org/wiki/Manual:Parser_functions
-	 */
-	public static function onParserFirstCallInit( &$parser ) {
+	public static function onParserFirstCallInit( Parser &$parser ) {
 		// Add the following to a wiki page to see how it works:
 		// <dump>test</dump>
 		// <dump foo="bar" baz="quux">test content</dump>
-		$parser->setHook( 'dump', 'ExampleHooks::parserTagDump' );
+		$parser->setHook( 'dump', [ self::class, 'parserTagDump' ] );
 
 		// Add the following to a wiki page to see how it works:
 		// {{#echo: hello }}
-		$parser->setFunctionHook( 'echo', 'ExampleHooks::parserFunctionEcho' );
+		$parser->setFunctionHook( 'echo', [ self::class, 'parserFunctionEcho' ] );
 
 		// Add the following to a wiki page to see how it works:
 		// {{#showme: hello | hi | there }}
-		$parser->setFunctionHook( 'showme', 'ExampleHooks::parserFunctionShowme' );
-
-		return true;
+		$parser->setFunctionHook( 'showme', [ self::class, 'parserFunctionShowme' ] );
 	}
 
-	public static function onRegisterMagicWords( &$magicWordsIds ) {
+	/**
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/MagicWordwgVariableIDs
+	 */
+	public static function onMagicWordwgVariableIDs( array &$magicWordsIds ) {
 		// Add the following to a wiki page to see how it works:
 		// {{MYWORD}}
 		$magicWordsIds[] = 'myword';
-
-		return true;
 	}
 
+	/**
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserGetVariableValueSwitch
+	 */
 	public static function onParserGetVariableValueSwitch( &$parser, &$cache, &$magicWordId, &$ret ) {
 		if ( $magicWordId === 'myword' ) {
 			// Return value and cache should match. Cache is used to save
 			// additional call when it is used multiple times on a page.
 			$ret = $cache['myword'] = self::parserGetWordMyword();
 		}
-
-		return true;
 	}
 
 	/**
-	 * This registers our database schema update(s)
+	 * Register our database schema.
+	 *
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LoadExtensionSchemaUpdates
 	 */
-	public static function onLoadExtensionSchemaUpdates( $updater ) {
-		$updater->addExtensionTable( 'example_note', __DIR__ . '/sql/add-example_note.sql' );
-
-		return true;
+	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
+		$updater->addExtensionTable( 'example_note', dirname( __DIR__ ) . '/sql/add-example_note.sql' );
 	}
 
 	/**
-	 * Parser magic word handler for {{MYWORD}}
+	 * Parser magic word handler for {{MYWORD}}.
 	 *
 	 * @return string Wikitext to be rendered in the page.
 	 */
@@ -131,7 +124,7 @@ class ExampleHooks {
 	 * @return string HTML to insert in the page.
 	 */
 	public static function parserFunctionEcho( $parser, $value ) {
-		return '<pre>Echo Function: ' . htmlspecialchars( $value ) . '</pre>';
+		return '<strong>Echo says: ' . htmlspecialchars( $value ) . '</strong>';
 	}
 
 	/**

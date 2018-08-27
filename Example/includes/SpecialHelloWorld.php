@@ -1,12 +1,13 @@
 <?php
 /**
- * HelloWorld SpecialPage for Example extension
+ * HelloWorld Special page.
  *
  * @file
- * @ingroup Extensions
  */
 
-class SpecialHelloWorld extends SpecialPage {
+namespace MediaWiki\Extension\Example;
+
+class SpecialHelloWorld extends \SpecialPage {
 
 	/**
 	 * Initialize the special page.

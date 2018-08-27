@@ -1,5 +1,10 @@
 <?php
-class ApiQueryExample extends ApiQueryBase {
+
+namespace MediaWiki\Extension\Example;
+
+use ApiBase;
+
+class ApiQueryExample extends \ApiQueryBase {
 
 	/**
 	 * Constructor is optional. Only needed if we give
