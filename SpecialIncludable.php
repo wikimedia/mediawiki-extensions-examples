@@ -38,6 +38,6 @@ class SpecialIncludable extends IncludableSpecialPage {
 			$this->setHeaders();
 		}
 
-		$this->getOutput()->addWikiText( $out );
+		$this->getOutput()->addWikiTextAsInterface( $out );
 	}
 }

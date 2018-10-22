@@ -24,7 +24,7 @@ class ContentAction extends FormlessAction {
 	public function show() {
 		parent::show();
 
-		$this->getContext()->getOutput()->addWikiText(
+		$this->getContext()->getOutput()->addWikiTextAsInterface(
 			'This is a custom action for page [[' . $this->getTitle()->getText() . ']].'
 		);
 	}
