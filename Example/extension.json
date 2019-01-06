@@ -56,7 +56,8 @@
 		"ParserFirstCallInit": "MediaWiki\\Extension\\Example\\Hooks::onParserFirstCallInit",
 		"MagicWordwgVariableIDs": "MediaWiki\\Extension\\Example\\Hooks::onMagicWordwgVariableIDs",
 		"ParserGetVariableValueSwitch": "MediaWiki\\Extension\\Example\\Hooks::onParserGetVariableValueSwitch",
-		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\Example\\Hooks::onLoadExtensionSchemaUpdates"
+		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\Example\\Hooks::onLoadExtensionSchemaUpdates",
+		"ResourceLoaderTestModules": "MediaWiki\\Extension\\Example\\Hooks::onResourceLoaderTestModules"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules/"
