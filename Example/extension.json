@@ -10,11 +10,11 @@
 	},
 	"config": {
 		"ExampleEnableWelcome": {
-			"@": "Enable the Welcome features",
+			"description": "Enable the Welcome features",
 			"value": true
 		},
 		"ExampleWelcomeColorDays": {
-			"@": "Color for the Welcome message bar by week day",
+			"description": "Color for the Welcome message bar by week day",
 			"value": {
 				"monday": "orange",
 				"tuesday": "blue",
@@ -24,11 +24,11 @@
 			}
 		},
 		"ExampleWelcomeColorDefault": {
-			"@": "Default color for the Welcome message",
+			"description": "Default color for the Welcome message",
 			"value": "#eee"
 		},
 		"ExampleMyWord": {
-			"@": "Value for the {{MYWORD}} magic word in wikitext.",
+			"description": "Value for the {{MYWORD}} magic word in wikitext.",
 			"value": "Awesome"
 		}
 	},
