@@ -32,6 +32,7 @@ class Hooks {
 	 *
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserFirstCallInit
 	 * @see https://www.mediawiki.org/wiki/Manual:Parser_functions
+	 * @param Parser &$parser
 	 */
 	public static function onParserFirstCallInit( Parser &$parser ) {
 		// Add the following to a wiki page to see how it works:
@@ -50,6 +51,7 @@ class Hooks {
 
 	/**
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/MagicWordwgVariableIDs
+	 * @param array &$magicWordsIds
 	 */
 	public static function onMagicWordwgVariableIDs( array &$magicWordsIds ) {
 		// Add the following to a wiki page to see how it works:
@@ -72,6 +74,7 @@ class Hooks {
 	 * Register our database schema.
 	 *
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LoadExtensionSchemaUpdates
+	 * @param DatabaseUpdater $updater
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		$updater->addExtensionTable( 'example_note', dirname( __DIR__ ) . '/sql/add-example_note.sql' );
@@ -108,12 +111,11 @@ class Hooks {
 	 * Parser hook handler for <dump>
 	 *
 	 * @param string $data The content of the tag.
-	 * @param array $params The attributes of the tag.
+	 * @param array $attribs The attributes of the tag.
 	 * @param Parser $parser Parser instance available to render
 	 *  wikitext into html, or parser methods.
 	 * @param PPFrame $frame Can be used to see what template
 	 *  arguments ({{{1}}}) this hook was used with.
-	 *
 	 * @return string HTML to insert in the page.
 	 */
 	public static function parserTagDump( $data, $attribs, $parser, $frame ) {
@@ -139,7 +141,7 @@ class Hooks {
 	 *
 	 * @return string HTML to insert in the page.
 	 */
-	public static function parserFunctionEcho( $parser, $value ) {
+	public static function parserFunctionEcho( Parser $parser, $value ) {
 		return '<strong>Echo says: ' . htmlspecialchars( $value ) . '</strong>';
 	}
 
@@ -151,7 +153,7 @@ class Hooks {
 	 *
 	 * @return string HTML to insert in the page.
 	 */
-	public static function parserFunctionShowme( $parser, $value /* arg2, arg3, */ ) {
+	public static function parserFunctionShowme( Parser $parser, $value /* arg2, arg3, */ ) {
 		$args = array_slice( func_get_args(), 2 );
 		$showme = [
 			'value' => $value,
