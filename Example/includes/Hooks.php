@@ -7,7 +7,9 @@
 
 namespace MediaWiki\Extension\Example;
 
+use FormatJson;
 use OutputPage;
+use PPFrame;
 use Skin;
 use Parser;
 use DatabaseUpdater;
