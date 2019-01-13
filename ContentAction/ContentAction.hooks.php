@@ -15,11 +15,11 @@ class ContentActionHooks {
 	public static function onSkinTemplateNavigation( SkinTemplate $skin, array &$content_actions ) {
 		$action = $skin->getRequest()->getText( 'action' );
 
-		if ( $skin->getTitle()->getNamespace() != NS_SPECIAL ) {
+		if ( $skin->getTitle()->getNamespace() !== NS_SPECIAL ) {
 			$content_actions['actions']['myact'] = [
 				'class' => $action === 'myact' ? 'selected' : false,
 				'text' => wfMessage( 'contentaction-myact' )->text(),
-				'href' => $skin->getTitle()->getLocalUrl( 'action=myact' )
+				'href' => $skin->getTitle()->getLocalURL( 'action=myact' )
 			];
 		}
 	}
