@@ -10,5 +10,7 @@
 	"apihelp-query+example-summary": "{{doc-apihelp-summary|query+example}}",
 	"apihelp-query+example-param-key": "{{doc-apihelp-param|query+example|key}}",
 	"apihelp-query+example-example-1": "{{doc-apihelp-example|query+example}}",
-	"apihelp-query+example-example-2": "{{doc-apihelp-example|query+example}}"
+	"apihelp-query+example-example-2": "{{doc-apihelp-example|query+example}}",
+
+	"contentaction-myact": "This is a message that is saying my action."
 }

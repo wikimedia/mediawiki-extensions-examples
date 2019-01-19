@@ -2,14 +2,10 @@
  * Stylesheet for the Welcome feature.
  */
 
-.mw-welcome-bar-parent {
-	position: relative;
-}
-
 .mw-welcome-bar {
 	position: absolute;
-	bottom: 100%;
-	left: -1em;
+	top: 6em;
+	right: 2em;
 	display: block;
 	background-color: #fff;
 	border: 0.5em solid #eee;

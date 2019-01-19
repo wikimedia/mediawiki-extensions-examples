@@ -7,7 +7,9 @@
  * @license GPL-2.0-or-later
  */
 
-class ContentAction extends FormlessAction {
+namespace MediaWiki\Extension\Example;
+
+class MyactAction extends \FormlessAction {
 	public function getName() {
 		return 'myact';
 	}

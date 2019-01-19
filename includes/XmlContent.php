@@ -23,7 +23,7 @@
  *
  * @author Daniel Kinzler
  */
-namespace MediaWiki\Extension\Examples\DataPages;
+namespace MediaWiki\Extension\Example;
 
 use Content;
 use ParserOptions;
@@ -55,8 +55,9 @@ use WikiPage;
  * @package DataPages
  */
 class XmlContent extends TextContent {
+	const MODEL = 'xmldata';
 
-	public function __construct( $text, $model_id = CONTENT_MODEL_XML_DATA ) {
+	public function __construct( $text, $model_id = self::MODEL ) {
 		parent::__construct( $text, $model_id );
 	}
 

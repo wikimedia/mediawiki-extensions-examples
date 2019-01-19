@@ -10,5 +10,7 @@
 	"apihelp-query+example-summary": "Get information about foo.",
 	"apihelp-query+example-param-key": "Reduce the result to only one of the foo properties.",
 	"apihelp-query+example-example-1": "Get all the information about foo.",
-	"apihelp-query+example-example-2": "Get only information for the key \"do\""
+	"apihelp-query+example-example-2": "Get only information for the key \"do\"",
+
+	"contentaction-myact": "My action"
 }

@@ -13,6 +13,7 @@ use PPFrame;
 use Skin;
 use Parser;
 use DatabaseUpdater;
+use SkinTemplate;
 
 class Hooks {
 	/**
@@ -96,6 +97,23 @@ class Hooks {
 				'ext.Example.welcome.test.js',
 			],
 		];
+	}
+
+	/**
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/SkinTemplateNavigation
+	 * @param SkinTemplate $skin
+	 * @param array &$cactions
+	 */
+	public static function onSkinTemplateNavigation( SkinTemplate $skin, array &$cactions ) {
+		$action = $skin->getRequest()->getText( 'action' );
+
+		if ( $skin->getTitle()->getNamespace() !== NS_SPECIAL ) {
+			$cactions['actions']['myact'] = [
+				'class' => $action === 'myact' ? 'selected' : false,
+				'text' => wfMessage( 'contentaction-myact' )->text(),
+				'href' => $skin->getTitle()->getLocalURL( 'action=myact' ),
+			];
+		}
 	}
 
 	/**

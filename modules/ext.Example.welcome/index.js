@@ -37,8 +37,7 @@
 			// See also <https://api.jquery.com/jQuery>.
 			$( function () {
 				$( 'h1' ).first()
-					.addClass( 'mw-welcome-bar-parent' )
-					.append( $box );
+					.after( $box );
 			} );
 		},
 

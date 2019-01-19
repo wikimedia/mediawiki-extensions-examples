@@ -23,7 +23,7 @@
  *
  * @author Daniel Kinzler
  */
-namespace MediaWiki\Extension\Examples\DataPages;
+namespace MediaWiki\Extension\Example;
 
 use Content;
 use IContextSource;
@@ -43,7 +43,7 @@ use TextContentHandler;
 class XmlContentHandler extends TextContentHandler {
 
 	public function __construct(
-		$modelId = CONTENT_MODEL_XML_DATA,
+		$modelId = XmlContent::MODEL,
 		$formats = [ CONTENT_FORMAT_XML ]  // XML is supported as a serialization format by default
 	) {
 		parent::__construct( $modelId, $formats );
