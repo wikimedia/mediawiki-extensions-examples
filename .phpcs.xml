@@ -7,8 +7,6 @@
 		<exclude name="MediaWiki.Commenting.FunctionComment.ParamNameNoMatch" />
 		<exclude name="MediaWiki.Commenting.LicenseComment.InvalidLicenseTag" />
 		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.NewLineComment" />
-		<exclude name="MediaWiki.Commenting.FunctionComment.MissingReturn" />
-		<exclude name="MediaWiki.Files.ClassMatchesFilename.NotMatch" />
 	</rule>
 	<file>.</file>
 	<arg name="extensions" value="php,php5,inc"/>
