@@ -43,5 +43,5 @@ Now, run `npm test` to run the automated front-end code checks..
 ## Contributing
 
 ```bash
-git clone https://gerrit.wikimedia.org/r/p/mediawiki/extensions/examples.git
+git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/examples.git
 ```
