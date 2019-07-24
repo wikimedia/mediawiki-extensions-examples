@@ -1,9 +1,7 @@
 {
 	"private": true,
 	"scripts": {
-		"test": "grunt test && npm run qunit",
-		"qunit": "NODE_PATH=modules nyc qunit --require ./tests/bootstrap.js tests/qunit",
-		"qunit:watch": "NODE_PATH=modules qunit --watch --require ./tests/bootstrap.js tests/qunit"
+		"test": "grunt test"
 	},
 	"devDependencies": {
 		"eslint-config-wikimedia": "0.9.0",
@@ -12,21 +10,8 @@
 		"grunt-eslint": "21.0.0",
 		"grunt-jsonlint": "1.1.0",
 		"grunt-stylelint": "0.10.1",
-		"nyc": "13.1.0",
-		"qunit": "2.8.0",
 		"stylelint": "9.9.0",
 		"stylelint-config-wikimedia": "0.6.0"
-	},
-	"nyc": {
-		"exclude": [
-			"tests"
-		],
-		"reporter": [
-			"text",
-			"clover",
-			"html"
-		],
-		"report-dir": "coverage"
 	},
 	"eslintIgnore": [
 		"coverage",

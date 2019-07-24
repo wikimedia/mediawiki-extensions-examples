@@ -40,8 +40,7 @@
 	},
 	"MessagesDirs": {
 		"Example": [
-			"i18n",
-			"i18n/api"
+			"i18n"
 		]
 	},
 	"ExtensionMessagesFiles": {
@@ -84,14 +83,22 @@
 			"defaultcontentmodel": "wikitext"
 		}
 	],
-
+	"QUnitTestModule": {
+			"localBasePath": "tests/qunit/",
+			"remoteExtPath": "examples/tests/qunit/",
+			"scripts": [
+				"ext.Example.welcome.test.js"
+			],
+			"dependencies": [
+				"ext.Example.welcome"
+			]
+	},
 	"Hooks": {
 		"BeforePageDisplay": "MediaWiki\\Extension\\Example\\Hooks::onBeforePageDisplay",
 		"ParserFirstCallInit": "MediaWiki\\Extension\\Example\\Hooks::onParserFirstCallInit",
 		"MagicWordwgVariableIDs": "MediaWiki\\Extension\\Example\\Hooks::onMagicWordwgVariableIDs",
 		"ParserGetVariableValueSwitch": "MediaWiki\\Extension\\Example\\Hooks::onParserGetVariableValueSwitch",
 		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\Example\\Hooks::onLoadExtensionSchemaUpdates",
-		"ResourceLoaderTestModules": "MediaWiki\\Extension\\Example\\Hooks::onResourceLoaderTestModules",
 		"SkinTemplateNavigation": "MediaWiki\\Extension\\Example\\Hooks::onSkinTemplateNavigation"
 	},
 	"ResourceFileModulePaths": {

@@ -84,22 +84,6 @@ class Hooks {
 	}
 
 	/**
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ResourceLoaderTestModules
-	 */
-	public static function onResourceLoaderTestModules( array &$modules ) {
-		$modules['qunit']['ext.Example.tests'] = [
-			'dependencies' => [
-				'ext.Example.welcome',
-			],
-			'localBasePath' => dirname( __DIR__ ) . '/tests/qunit',
-			'remoteExtPath' => 'examples/Example/tests/qunit',
-			'scripts' => [
-				'ext.Example.welcome.test.js',
-			],
-		];
-	}
-
-	/**
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/SkinTemplateNavigation
 	 * @param SkinTemplate $skin
 	 * @param array &$cactions
