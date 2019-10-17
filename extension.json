@@ -101,6 +101,12 @@
 		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\Example\\Hooks::onLoadExtensionSchemaUpdates",
 		"SkinTemplateNavigation": "MediaWiki\\Extension\\Example\\Hooks::onSkinTemplateNavigation"
 	},
+	"RestRoutes": [
+		{
+			"path": "/examples/v1/echo_path_param/{value_to_echo}",
+			"class": "MediaWiki\\Extension\\Example\\RestApiExample"
+		}
+	],
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules/"
 	},

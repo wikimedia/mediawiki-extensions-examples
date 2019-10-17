@@ -23,7 +23,6 @@ class Hooks {
 	 */
 	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
 		global $wgExampleEnableWelcome;
-
 		if ( $wgExampleEnableWelcome ) {
 			// Load our module on all pages
 			$out->addModules( 'ext.Example.welcome' );
