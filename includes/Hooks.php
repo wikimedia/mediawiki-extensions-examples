@@ -152,12 +152,11 @@ class Hooks {
 	 * Parser function handler for {{#showme: .. | .. }}
 	 *
 	 * @param Parser $parser
-	 * @param string $arg
-	 *
+	 * @param string $value
+	 * @param string ...$args
 	 * @return string HTML to insert in the page.
 	 */
-	public static function parserFunctionShowme( Parser $parser, $value /* arg2, arg3, */ ) {
-		$args = array_slice( func_get_args(), 2 );
+	public static function parserFunctionShowme( Parser $parser, string $value, ...$args ) {
 		$showme = [
 			'value' => $value,
 			'arguments' => $args,

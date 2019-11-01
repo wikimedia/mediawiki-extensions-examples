@@ -18,7 +18,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @license GPL 2+
+ * @license GPL-2.0-or-later
  * @file
  *
  * @author Daniel Kinzler
@@ -55,7 +55,7 @@ use WikiPage;
  * @package DataPages
  */
 class XmlContent extends TextContent {
-	const MODEL = 'xmldata';
+	public const MODEL = 'xmldata';
 
 	public function __construct( $text, $model_id = self::MODEL ) {
 		parent::__construct( $text, $model_id );
