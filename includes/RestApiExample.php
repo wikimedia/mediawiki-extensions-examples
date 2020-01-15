@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\Example;
 
-use Wikimedia\ParamValidator\ParamValidator;
 use MediaWiki\Rest\SimpleHandler;
+use Wikimedia\ParamValidator\ParamValidator;
 
 /**
  * Example class to echo a path parameter

@@ -7,12 +7,12 @@
 
 namespace MediaWiki\Extension\Example;
 
+use DatabaseUpdater;
 use FormatJson;
 use OutputPage;
+use Parser;
 use PPFrame;
 use Skin;
-use Parser;
-use DatabaseUpdater;
 use SkinTemplate;
 
 class Hooks {
