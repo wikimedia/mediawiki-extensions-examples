@@ -40,7 +40,8 @@
 	},
 	"MessagesDirs": {
 		"Example": [
-			"i18n"
+			"i18n",
+			"i18n/api"
 		]
 	},
 	"ExtensionMessagesFiles": {
@@ -84,14 +85,14 @@
 		}
 	],
 	"QUnitTestModule": {
-			"localBasePath": "tests/qunit/",
-			"remoteExtPath": "examples/tests/qunit/",
-			"scripts": [
-				"ext.Example.welcome.test.js"
-			],
-			"dependencies": [
-				"ext.Example.welcome"
-			]
+		"localBasePath": "tests/qunit/",
+		"remoteExtPath": "examples/tests/qunit/",
+		"scripts": [
+			"ext.Example.welcome.test.js"
+		],
+		"dependencies": [
+			"ext.Example.welcome"
+		]
 	},
 	"Hooks": {
 		"BeforePageDisplay": "MediaWiki\\Extension\\Example\\Hooks::onBeforePageDisplay",
