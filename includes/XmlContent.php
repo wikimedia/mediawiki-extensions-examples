@@ -177,7 +177,7 @@ class XmlContent extends TextContent {
 	 * was edited, imported, restored, or what.
 	 *
 	 * The downside is that it's too late here for meaningful interaction
-	 * with the user, we can just abort the save operation, casing an internal
+	 * with the user, we can just abort the save operation, causing an internal
 	 * error.
 	 *
 	 * @return bool
