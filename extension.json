@@ -45,8 +45,8 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"ExampleAlias" : "Example.i18n.alias.php",
-		"ExampleMagic" : "Example.i18n.magic.php"
+		"ExampleAlias": "Example.i18n.alias.php",
+		"ExampleMagic": "Example.i18n.magic.php"
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\Example\\": "includes/"
@@ -95,12 +95,27 @@
 		]
 	},
 	"Hooks": {
-		"BeforePageDisplay": "MediaWiki\\Extension\\Example\\Hooks::onBeforePageDisplay",
-		"ParserFirstCallInit": "MediaWiki\\Extension\\Example\\Hooks::onParserFirstCallInit",
-		"MagicWordwgVariableIDs": "MediaWiki\\Extension\\Example\\Hooks::onMagicWordwgVariableIDs",
-		"ParserGetVariableValueSwitch": "MediaWiki\\Extension\\Example\\Hooks::onParserGetVariableValueSwitch",
-		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\Example\\Hooks::onLoadExtensionSchemaUpdates",
-		"SkinTemplateNavigation": "MediaWiki\\Extension\\Example\\Hooks::onSkinTemplateNavigation"
+		"BeforePageDisplay": "handleHooks",
+		"ParserFirstCallInit": "handleHooks",
+		"ParserGetVariableValueSwitch": "handleHooks",
+		"SkinTemplateNavigation": "handleHooks",
+		"MagicWordwgVariableIDs": {
+			"handler": "handleMoreHooks",
+			"deprecated": true
+		},
+		"GetMagicVariableIDs": "handleMoreHooks",
+		"LoadExtensionSchemaUpdates": {
+			"handler": "handleMoreHooks"
+		}
+	},
+	"HookHandlers": {
+		"handleHooks": {
+			"class": "MediaWiki\\Extension\\Example\\Hooks",
+			"services": [ "PermissionManager" ]
+		},
+		"handleMoreHooks": {
+			"class": "MediaWiki\\Extension\\Example\\MoreHooks"
+		}
 	},
 	"RestRoutes": [
 		{

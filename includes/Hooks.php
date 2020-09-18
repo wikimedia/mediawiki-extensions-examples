@@ -7,25 +7,72 @@
 
 namespace MediaWiki\Extension\Example;
 
-use DatabaseUpdater;
 use FormatJson;
+use MediaWiki\Permissions\PermissionManager;
 use OutputPage;
 use Parser;
 use PPFrame;
 use Skin;
 use SkinTemplate;
 
-class Hooks {
+class Hooks implements
+	\MediaWiki\Hook\BeforePageDisplayHook,
+	\MediaWiki\Hook\ParserFirstCallInitHook,
+	\MediaWiki\Hook\ParserGetVariableValueSwitchHook,
+	\MediaWiki\Hook\SkinTemplateNavigationHook
+{
+
+	/** @var PermissionManager */
+	private $permissionManager;
+
+	/**
+	 * @param PermissionManager $permissionManager example injected service
+	 */
+	public function __construct( PermissionManager $permissionManager ) {
+		$this->permissionManager = $permissionManager;
+	}
+
 	/**
 	 * Customisations to OutputPage right before page display.
 	 *
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/BeforePageDisplay
+	 * @param OutputPage $out
+	 * @param Skin $skin
 	 */
-	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
-		global $wgExampleEnableWelcome;
-		if ( $wgExampleEnableWelcome ) {
-			// Load our module on all pages
-			$out->addModules( 'ext.Example.welcome' );
+	public function onBeforePageDisplay( $out, $skin ) : void {
+		if ( $this->permissionManager->userCan( 'read', $out->getUser(), $out->getTitle() ) ) {
+			global $wgExampleEnableWelcome;
+			if ( $wgExampleEnableWelcome ) {
+				// Load our module on all pages
+				$out->addModules( 'ext.Example.welcome' );
+			}
+		}
+	}
+
+	/**
+	 * Parser magic word handler for {{MYWORD}}.
+	 *
+	 * @return string Wikitext to be rendered in the page.
+	 */
+	public static function parserGetWordMyword() {
+		global $wgExampleMyWord;
+		return wfEscapeWikiText( $wgExampleMyWord );
+	}
+
+	/**
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserGetVariableValueSwitch
+	 * @param Parser $parser
+	 * @param array &$cache
+	 * @param string $magicWordId
+	 * @param string &$ret
+	 * @param PPFrame $frame
+	 *
+	 */
+	public function onParserGetVariableValueSwitch( $parser, &$cache, $magicWordId, &$ret, $frame ) {
+		if ( $magicWordId === 'myword' ) {
+			// Return value and cache should match. Cache is used to save
+			// additional call when it is used multiple times on a page.
+			$ret = $cache['myword'] = self::parserGetWordMyword();
 		}
 	}
 
@@ -35,8 +82,9 @@ class Hooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserFirstCallInit
 	 * @see https://www.mediawiki.org/wiki/Manual:Parser_functions
 	 * @param Parser $parser
+	 * @throws \MWException
 	 */
-	public static function onParserFirstCallInit( Parser $parser ) {
+	public function onParserFirstCallInit( $parser ) {
 		// Add the following to a wiki page to see how it works:
 		// <dump>test</dump>
 		// <dump foo="bar" baz="quux">test content</dump>
@@ -52,62 +100,20 @@ class Hooks {
 	}
 
 	/**
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/MagicWordwgVariableIDs
-	 * @param array &$magicWordsIds
-	 */
-	public static function onMagicWordwgVariableIDs( array &$magicWordsIds ) {
-		// Add the following to a wiki page to see how it works:
-		// {{MYWORD}}
-		$magicWordsIds[] = 'myword';
-	}
-
-	/**
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserGetVariableValueSwitch
-	 */
-	public static function onParserGetVariableValueSwitch( $parser, &$cache, $magicWordId, &$ret ) {
-		if ( $magicWordId === 'myword' ) {
-			// Return value and cache should match. Cache is used to save
-			// additional call when it is used multiple times on a page.
-			$ret = $cache['myword'] = self::parserGetWordMyword();
-		}
-	}
-
-	/**
-	 * Register our database schema.
-	 *
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LoadExtensionSchemaUpdates
-	 * @param DatabaseUpdater $updater
-	 */
-	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
-		$updater->addExtensionTable( 'example_note', dirname( __DIR__ ) . '/sql/add-example_note.sql' );
-	}
-
-	/**
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/SkinTemplateNavigation
 	 * @param SkinTemplate $skin
 	 * @param array &$cactions
 	 */
-	public static function onSkinTemplateNavigation( SkinTemplate $skin, array &$cactions ) {
+	public function onSkinTemplateNavigation( $skin, &$cactions ) : void {
 		$action = $skin->getRequest()->getText( 'action' );
 
 		if ( $skin->getTitle()->getNamespace() !== NS_SPECIAL ) {
 			$cactions['actions']['myact'] = [
 				'class' => $action === 'myact' ? 'selected' : false,
-				'text' => wfMessage( 'contentaction-myact' )->text(),
+				'text' => $skin->msg( 'contentaction-myact' )->text(),
 				'href' => $skin->getTitle()->getLocalURL( 'action=myact' ),
 			];
 		}
-	}
-
-	/**
-	 * Parser magic word handler for {{MYWORD}}.
-	 *
-	 * @return string Wikitext to be rendered in the page.
-	 */
-	public static function parserGetWordMyword() {
-		global $wgExampleMyWord;
-
-		return wfEscapeWikiText( $wgExampleMyWord );
 	}
 
 	/**
@@ -126,7 +132,6 @@ class Hooks {
 			'content' => $data,
 			'atributes' => (object)$attribs,
 		];
-
 		// Very important to escape user data with htmlspecialchars() to prevent
 		// an XSS security vulnerability.
 		$html = '<pre>Dump Tag: '
