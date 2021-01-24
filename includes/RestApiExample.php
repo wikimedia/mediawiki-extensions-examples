@@ -12,6 +12,7 @@ class RestApiExample extends SimpleHandler {
 
 	private const VALID_ACTIONS = [ 'reverse', 'shuffle', 'md5' ];
 
+	/** @inheritDoc */
 	public function run( $valueToEcho, $action ) {
 		switch ( $action ) {
 			case 'reverse':
@@ -28,10 +29,12 @@ class RestApiExample extends SimpleHandler {
 		}
 	}
 
+	/** @inheritDoc */
 	public function needsWriteAccess() {
 		return false;
 	}
 
+	/** @inheritDoc */
 	public function getParamSettings() {
 		return [
 			'value_to_echo' => [

@@ -34,6 +34,7 @@ class SpecialHelloWorld extends \SpecialPage {
 		$out->addWikiMsg( 'example-helloworld-intro' );
 	}
 
+	/** @inheritDoc */
 	protected function getGroupName() {
 		return 'other';
 	}

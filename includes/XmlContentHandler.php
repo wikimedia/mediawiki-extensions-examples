@@ -42,6 +42,7 @@ use TextContentHandler;
  */
 class XmlContentHandler extends TextContentHandler {
 
+	/** @inheritDoc */
 	public function __construct(
 		$modelId = XmlContent::MODEL,
 		$formats = [ CONTENT_FORMAT_XML ]  // XML is supported as a serialization format by default
@@ -49,22 +50,26 @@ class XmlContentHandler extends TextContentHandler {
 		parent::__construct( $modelId, $formats );
 	}
 
+	/** @inheritDoc */
 	public function serializeContent( Content $content, $format = null ) {
 		// No special logic needed; XmlContent just wraps the raw text.
 		// If XmlContent were DOM-based, we'd serialize the XML DOM here.
 		return parent::serializeContent( $content, $format );
 	}
 
+	/** @inheritDoc */
 	public function unserializeContent( $text, $format = null ) {
 		// No special logic needed; XmlContent just wraps the raw text.
 		// If XmlContent were DOM-based, we'd parse the XML here.
 		return new XmlContent( $text );
 	}
 
+	/** @inheritDoc */
 	public function makeEmptyContent() {
 		return new XmlContent( '' );
 	}
 
+	/** @inheritDoc */
 	public function getActionOverrides() {
 		// Add an override for the edit action to specify a custom editor
 		// for editing XML. The standard edit page will work as a default for
@@ -72,6 +77,7 @@ class XmlContentHandler extends TextContentHandler {
 		return parent::getActionOverrides();
 	}
 
+	/** @inheritDoc */
 	public function createDifferenceEngine( IContextSource $context,
 		$old = 0, $new = 0, $rcid = 0,
 		$refreshCache = false, $unhide = false
@@ -82,16 +88,19 @@ class XmlContentHandler extends TextContentHandler {
 		return parent::createDifferenceEngine( $context, $old, $new, $rcid, $refreshCache, $unhide );
 	}
 
+	/** @inheritDoc */
 	public function supportsSections() {
 		// return true if XmlContent implements section-handling
 		return parent::supportsSections();
 	}
 
+	/** @inheritDoc */
 	public function supportsRedirects() {
 		// return true if XmlContent supports representing redirects
 		return parent::supportsRedirects();
 	}
 
+	/** @inheritDoc */
 	public function merge3( Content $oldContent, Content $myContent, Content $yourContent ) {
 		// You could implement smart DOM-based diff/merge here.
 		// The default implementation is line-based, which isn't too great for XML.

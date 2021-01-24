@@ -19,6 +19,7 @@ class SpecialIncludable extends \IncludableSpecialPage {
 
 	/**
 	 * Show the page
+	 * @param string|null $par
 	 */
 	public function execute( $par = null ) {
 		if ( $this->including() ) {
