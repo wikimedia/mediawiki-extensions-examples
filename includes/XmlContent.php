@@ -58,6 +58,7 @@ use WikiPage;
 class XmlContent extends TextContent {
 	public const MODEL = 'xmldata';
 
+	/** @inheritDoc */
 	public function __construct( $text, $model_id = self::MODEL ) {
 		parent::__construct( $text, $model_id );
 	}

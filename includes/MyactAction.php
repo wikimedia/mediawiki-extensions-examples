@@ -10,19 +10,23 @@
 namespace MediaWiki\Extension\Example;
 
 class MyactAction extends \FormlessAction {
+	/** @inheritDoc */
 	public function getName() {
 		return 'myact';
 	}
 
+	/** @inheritDoc */
 	protected function getDescription() {
 		// Disable subtitle under page heading
 		return '';
 	}
 
+	/** @inheritDoc */
 	public function onView() {
 		return null;
 	}
 
+	/** @inheritDoc */
 	public function show() {
 		parent::show();
 

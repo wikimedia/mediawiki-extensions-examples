@@ -13,6 +13,8 @@ class ApiQueryExample extends \ApiQueryBase {
 	 * Query modules have the convention to use a property prefix.
 	 * Base modules generally don't use a prefix, and as such don't
 	 * need the constructor in most cases.
+	 * @param \ApiQuery $query
+	 * @param string $moduleName
 	 */
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'ex' );
@@ -47,6 +49,7 @@ class ApiQueryExample extends \ApiQueryBase {
 		$this->getResult()->addValue( null, $this->getModuleName(), $r );
 	}
 
+	/** @inheritDoc */
 	public function getAllowedParams() {
 		return [
 			'key' => [
@@ -55,6 +58,7 @@ class ApiQueryExample extends \ApiQueryBase {
 		];
 	}
 
+	/** @inheritDoc */
 	protected function getExamplesMessages() {
 		return [
 			'action=query&list=example'
