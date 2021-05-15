@@ -151,7 +151,7 @@ class XmlContent extends TextContent {
 
 			$param1 = array_reduce( // fancy way to concatenate the messages from LibXMLError objects
 				$errors,
-				function ( $msg, $error ) {
+				static function ( $msg, $error ) {
 					if ( $msg !== '' ) {
 						$msg .= '; ';
 					}
