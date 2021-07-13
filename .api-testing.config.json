@@ -1,0 +1,12 @@
+{
+	"base_uri": "http://default.web.mw.localhost:8080/mediawiki/",
+	"main_page": "Main_Page",
+	"root_user": {
+		"name": "Admin",
+		"password": "dockerpass"
+	},
+	"secret_key": "",
+	"extra_parameters": {
+		"xdebug_session": "PHPSTORM"
+	}
+}

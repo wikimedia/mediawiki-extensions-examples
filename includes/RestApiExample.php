@@ -10,11 +10,14 @@ use Wikimedia\ParamValidator\ParamValidator;
  */
 class RestApiExample extends SimpleHandler {
 
-	private const VALID_ACTIONS = [ 'reverse', 'shuffle', 'md5' ];
+	private const VALID_ACTIONS = [ 'echo', 'reverse', 'shuffle', 'md5' ];
 
 	/** @inheritDoc */
-	public function run( $valueToEcho, $action ) {
-		switch ( $action ) {
+	public function run( $valueToEcho ) {
+		switch ( $this->getValidatedParams()['text_action'] ) {
+			case 'echo':
+				return [ 'echo' => $valueToEcho ];
+
 			case 'reverse':
 				return [ 'echo' => strrev( $valueToEcho ) ];
 
@@ -23,9 +26,6 @@ class RestApiExample extends SimpleHandler {
 
 			case 'md5':
 				return [ 'echo' => md5( $valueToEcho ) ];
-
-			default:
-				return [ ' echo' => $valueToEcho ];
 		}
 	}
 
@@ -43,7 +43,8 @@ class RestApiExample extends SimpleHandler {
 				ParamValidator::PARAM_REQUIRED => true,
 			],
 			'text_action' => [
-				self::PARAM_SOURCE => 'path',
+				self::PARAM_SOURCE => 'query',
+				ParamValidator::PARAM_DEFAULT => 'echo',
 				ParamValidator::PARAM_TYPE => self::VALID_ACTIONS,
 				ParamValidator::PARAM_REQUIRED => false,
 			],

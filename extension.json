@@ -119,7 +119,7 @@
 	},
 	"RestRoutes": [
 		{
-			"path": "/examples/v1/echo_path_param/{value_to_echo}/{text_action}",
+			"path": "/examples/v1/echo_path_param/{value_to_echo}",
 			"class": "MediaWiki\\Extension\\Example\\RestApiExample"
 		}
 	],
