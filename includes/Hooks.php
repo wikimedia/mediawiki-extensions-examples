@@ -39,7 +39,7 @@ class Hooks implements
 	 * @param OutputPage $out
 	 * @param Skin $skin
 	 */
-	public function onBeforePageDisplay( $out, $skin ) : void {
+	public function onBeforePageDisplay( $out, $skin ): void {
 		if ( $this->permissionManager->userCan( 'read', $out->getUser(), $out->getTitle() ) ) {
 			global $wgExampleEnableWelcome;
 			if ( $wgExampleEnableWelcome ) {
@@ -104,7 +104,7 @@ class Hooks implements
 	 * @param SkinTemplate $skin
 	 * @param array &$cactions
 	 */
-	public function onSkinTemplateNavigation( $skin, &$cactions ) : void {
+	public function onSkinTemplateNavigation( $skin, &$cactions ): void {
 		$action = $skin->getRequest()->getText( 'action' );
 
 		if ( $skin->getTitle()->getNamespace() !== NS_SPECIAL ) {
