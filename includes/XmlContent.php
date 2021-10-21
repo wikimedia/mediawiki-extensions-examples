@@ -26,11 +26,8 @@
 namespace MediaWiki\Extension\Example;
 
 use Content;
-use ParserOptions;
-use ParserOutput;
 use Status;
 use TextContent;
-use Title;
 use User;
 use WikiPage;
 
@@ -61,40 +58,6 @@ class XmlContent extends TextContent {
 	/** @inheritDoc */
 	public function __construct( $text, $model_id = self::MODEL ) {
 		parent::__construct( $text, $model_id );
-	}
-
-	/**
-	 * Returns HTML for this content, as displayed on page.
-	 *
-	 * We could put pretty printing and syntax highlighting here.
-	 * And maybe throw in some JS for collapsible sections.
-	 * For now, let's assume the XML is already pretty.
-	 *
-	 * @return string
-	 */
-	public function getHtml() {
-		$html = htmlspecialchars( $this->getText() );
-		$html = "<pre>" . $html . "</pre>";
-		return $html;
-	}
-
-	/**
-	 * If you want to have more control over parsing than getHtml() gives you,
-	 * you can control the construction of the ParserOutput object and add
-	 * meta data like categories, etc. based on the content.
-	 *
-	 * @param Title $title
-	 * @param int|null $revId
-	 * @param ParserOptions|null $options
-	 * @param bool $generateHtml
-	 *
-	 * @return ParserOutput
-	 */
-	public function getParserOutput( Title $title,
-		$revId = null,
-		ParserOptions $options = null, $generateHtml = true
-	) {
-		return parent::getParserOutput( $title, $revId, $options, $generateHtml );
 	}
 
 	/**

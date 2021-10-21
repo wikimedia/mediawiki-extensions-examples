@@ -27,6 +27,8 @@ namespace MediaWiki\Extension\Example;
 
 use Content;
 use IContextSource;
+use MediaWiki\Content\Renderer\ContentParseParams;
+use ParserOutput;
 use TextContentHandler;
 
 /**
@@ -105,5 +107,26 @@ class XmlContentHandler extends TextContentHandler {
 		// You could implement smart DOM-based diff/merge here.
 		// The default implementation is line-based, which isn't too great for XML.
 		return parent::merge3( $oldContent, $myContent, $yourContent );
+	}
+
+	/** @inheritDoc */
+	protected function fillParserOutput(
+		Content $content,
+		ContentParseParams $cpoParams,
+		ParserOutput &$output
+	) {
+		'@phan-var XmlContent $content';
+		parent::fillParserOutput( $content, $cpoParams, $output );
+
+		if ( $cpoParams->getGenerateHtml() ) {
+			// Returns HTML for this content, as displayed on page.
+			$html = htmlspecialchars( $content->getText() );
+			$html = "<pre>" . $html . "</pre>";
+		} else {
+			$html = '';
+		}
+
+		$output->clearWrapperDivClass();
+		$output->setText( $html );
 	}
 }
