@@ -26,10 +26,7 @@
 namespace MediaWiki\Extension\Example;
 
 use Content;
-use Status;
 use TextContent;
-use User;
-use WikiPage;
 
 /**
  * Class XmlContent represents XML content.
@@ -84,57 +81,9 @@ class XmlContent extends TextContent {
 	}
 
 	/**
-	 * Called before saving an edit.
-	 * This is the preferred place for checking constraints, be they
-	 * on the content itself, or for global consistency.
-	 *
-	 * Alternatively, validity can be checked in isValid(), but there
-	 * we have no way to provide a detailed error report to the user.
-	 *
-	 * NOTE: For checking even on preview, we'd need a custom editor.
-	 * A nicer way to do this might be added to the ContentHandler facility in the future.
-	 *
-	 * @param WikiPage $page
-	 * @param int $flags
-	 * @param int $parentRevId
-	 * @param User $user
-	 *
-	 * @return Status
-	 */
-	public function prepareSave( WikiPage $page, $flags, $parentRevId, User $user ) {
-		libxml_use_internal_errors( true );
-		$doc = simplexml_load_string( $this->getText() );
-
-		$errors = libxml_get_errors();
-
-		$status = Status::newGood();
-
-		if ( !$doc || $errors ) {
-			// construct an informative error message here!
-
-			$param1 = array_reduce( // fancy way to concatenate the messages from LibXMLError objects
-				$errors,
-				static function ( $msg, $error ) {
-					if ( $msg !== '' ) {
-						$msg .= '; ';
-					}
-					$msg .= "line " . $error->line . ": " . $error->message;
-					return $msg;
-				},
-				''
-			);
-
-			// you should use a more meaningful message, if possible
-			$status->fatal( 'content-failed-to-parse', "XML", "", $param1 );
-		}
-
-		return $status;
-	}
-
-	/**
 	 * This is a last line of defense against storing invalid data.
 	 * It can be used to check validity, as an alternative to doing so
-	 * in prepareSave().
+	 * in XmlContentHandler::validateSave().
 	 *
 	 * Checking here has the advantage that this is ALWAYS called before
 	 * the content is saved to the database, no matter whether the content

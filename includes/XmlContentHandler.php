@@ -28,7 +28,9 @@ namespace MediaWiki\Extension\Example;
 use Content;
 use IContextSource;
 use MediaWiki\Content\Renderer\ContentParseParams;
+use MediaWiki\Content\ValidationParams;
 use ParserOutput;
+use Status;
 use TextContentHandler;
 
 /**
@@ -107,6 +109,41 @@ class XmlContentHandler extends TextContentHandler {
 		// You could implement smart DOM-based diff/merge here.
 		// The default implementation is line-based, which isn't too great for XML.
 		return parent::merge3( $oldContent, $myContent, $yourContent );
+	}
+
+	/** @inheritDoc */
+	public function validateSave(
+		Content $content,
+		ValidationParams $validationParams
+	) {
+		'@phan-var XmlContent $content';
+		libxml_use_internal_errors( true );
+		$doc = simplexml_load_string( $content->getText() );
+
+		$errors = libxml_get_errors();
+
+		$status = Status::newGood();
+
+		if ( !$doc || $errors ) {
+			// construct an informative error message here!
+
+			$param1 = array_reduce( // fancy way to concatenate the messages from LibXMLError objects
+				$errors,
+				static function ( $msg, $error ) {
+					if ( $msg !== '' ) {
+						$msg .= '; ';
+					}
+					$msg .= "line " . $error->line . ": " . $error->message;
+					return $msg;
+				},
+				''
+			);
+
+			// you should use a more meaningful message, if possible
+			$status->fatal( 'content-failed-to-parse', "XML", "", $param1 );
+		}
+
+		return $status;
 	}
 
 	/** @inheritDoc */
