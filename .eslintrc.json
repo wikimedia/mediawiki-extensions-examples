@@ -11,6 +11,9 @@
 	"rules": {
 		"no-jquery/no-parse-html-literal": "warn",
 		"no-jquery/no-global-selector": "warn",
-		"mediawiki/msg-doc": "warn"
+		"mediawiki/msg-doc": "warn",
+		"es-x/no-async-functions": "warn",
+		"es-x/no-block-scoped-variables": "warn",
+		"es-x/no-destructuring": "warn"
 	}
 }
