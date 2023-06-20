@@ -98,7 +98,7 @@
 		"BeforePageDisplay": "handleHooks",
 		"ParserFirstCallInit": "handleHooks",
 		"ParserGetVariableValueSwitch": "handleHooks",
-		"SkinTemplateNavigation": "handleHooks",
+		"SkinTemplateNavigation::Universal": "handleHooks",
 		"MagicWordwgVariableIDs": {
 			"handler": "handleMoreHooks",
 			"deprecated": true
