@@ -1,4 +1,6 @@
 <?php
+// phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
+
 /**
  * Hooks for Example extension.
  *
@@ -19,7 +21,7 @@ class Hooks implements
 	\MediaWiki\Hook\BeforePageDisplayHook,
 	\MediaWiki\Hook\ParserFirstCallInitHook,
 	\MediaWiki\Hook\ParserGetVariableValueSwitchHook,
-	\MediaWiki\Hook\SkinTemplateNavigationHook
+	\MediaWiki\Hook\SkinTemplateNavigation__UniversalHook
 {
 
 	/** @var PermissionManager */
@@ -102,13 +104,13 @@ class Hooks implements
 	/**
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/SkinTemplateNavigation
 	 * @param SkinTemplate $skin
-	 * @param array &$cactions
+	 * @param array &$content_navigation
 	 */
-	public function onSkinTemplateNavigation( $skin, &$cactions ): void {
+	public function onSkinTemplateNavigation__Universal( $skin, &$content_navigation ): void {
 		$action = $skin->getRequest()->getText( 'action' );
 
 		if ( $skin->getTitle()->getNamespace() !== NS_SPECIAL ) {
-			$cactions['actions']['myact'] = [
+			$content_navigation['actions']['myact'] = [
 				'class' => $action === 'myact' ? 'selected' : false,
 				'text' => $skin->msg( 'contentaction-myact' )->text(),
 				'href' => $skin->getTitle()->getLocalURL( 'action=myact' ),
