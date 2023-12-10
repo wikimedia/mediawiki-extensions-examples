@@ -10,7 +10,7 @@
 	"example-desc": "This is an example extension using the BoilerPlate.",
 	"example-welcome-title-user": "Howdy $1, today is a fine $2!",
 	"example-welcome-title-loggedout": "Hi there, today is a fine $2!",
-	"example-helloworld": "Bar",
+	"example-helloworld": "Hello world",
 	"example-helloworld-intro": "This is the HelloWorld special page, as provided by the Example extension.",
 	"contentaction-myact": "My action"
 }

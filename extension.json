@@ -33,6 +33,12 @@
 			"description": "Default color for the Welcome message",
 			"value": "#eee"
 		},
+		"ExampleFooStuff": {
+			"value": {
+				"a": 1,
+				"b": 2
+			}
+		},
 		"ExampleMyWord": {
 			"description": "Value for the {{MYWORD}} magic word in wikitext.",
 			"value": "Awesome"
