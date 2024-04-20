@@ -10,7 +10,9 @@
 namespace MediaWiki\Extension\Example;
 
 use FormatJson;
+use MediaWiki\Config\Config;
 use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 use OutputPage;
 use Parser;
 use PPFrame;
@@ -21,6 +23,7 @@ class Hooks implements
 	\MediaWiki\Hook\BeforePageDisplayHook,
 	\MediaWiki\Hook\ParserFirstCallInitHook,
 	\MediaWiki\Hook\ParserGetVariableValueSwitchHook,
+	ResourceLoaderGetConfigVarsHook,
 	\MediaWiki\Hook\SkinTemplateNavigation__UniversalHook
 {
 
@@ -172,5 +175,11 @@ class Hooks implements
 		return '<pre>Showme Function: '
 			. htmlspecialchars( FormatJson::encode( $showme, /*prettyPrint=*/true ) )
 			. '</pre>';
+	}
+
+	/** @inheritDoc */
+	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
+		$vars['wgExampleWelcomeColorDays'] = $config->get( 'ExampleWelcomeColorDays' );
+		$vars['wgExampleWelcomeColorDefault'] = $config->get( 'ExampleWelcomeColorDefault' );
 	}
 }

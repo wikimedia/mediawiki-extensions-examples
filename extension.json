@@ -99,6 +99,7 @@
 		"ParserFirstCallInit": "handleHooks",
 		"ParserGetVariableValueSwitch": "handleHooks",
 		"SkinTemplateNavigation::Universal": "handleHooks",
+		"ResourceLoaderGetConfigVars": "handleHooks",
 		"MagicWordwgVariableIDs": {
 			"handler": "handleMoreHooks",
 			"deprecated": true
@@ -128,7 +129,6 @@
 	},
 	"ResourceModules": {
 		"ext.Example.welcome": {
-			"class": "MediaWiki\\Extension\\Example\\WelcomeModule",
 			"dependencies": [
 				"mediawiki.util",
 				"mediawiki.user",
