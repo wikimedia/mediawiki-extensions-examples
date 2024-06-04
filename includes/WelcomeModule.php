@@ -2,9 +2,12 @@
 
 namespace MediaWiki\Extension\Example;
 
-class WelcomeModule extends \ResourceLoaderFileModule {
+use MediaWiki\ResourceLoader\Context;
+use MediaWiki\ResourceLoader\FileModule;
+
+class WelcomeModule extends FileModule {
 	/** @inheritDoc */
-	public function getScript( \ResourceLoaderContext $context ) {
+	public function getScript( Context $context ) {
 		$conf = $this->getConfig();
 		return \Xml::encodeJsCall( 'mw.config.set', [ [
 			'wgExampleWelcomeColorDays' => $conf->get( 'ExampleWelcomeColorDays' ),
