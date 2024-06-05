@@ -27,7 +27,7 @@ class SpecialHelloWorld extends \SpecialPage {
 	public function execute( $sub ) {
 		$out = $this->getOutput();
 
-		$out->setPageTitle( $this->msg( 'example-helloworld' ) );
+		$out->setPageTitleMsg( $this->msg( 'example-helloworld' ) );
 
 		// Parses message from .i18n.php as wikitext and adds it to the
 		// page output.
