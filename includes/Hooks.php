@@ -45,12 +45,10 @@ class Hooks implements
 	 * @param Skin $skin
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
-		if ( $this->permissionManager->userCan( 'read', $out->getUser(), $out->getTitle() ) ) {
-			global $wgExampleEnableWelcome;
-			if ( $wgExampleEnableWelcome ) {
-				// Load our module on all pages
-				$out->addModules( 'ext.Example.welcome' );
-			}
+		global $wgExampleEnableWelcome;
+		if ( $wgExampleEnableWelcome && $out->getTitle()->getNamespace() === NS_MAIN ) {
+			// Load our module on all articles
+			$out->addModules( 'ext.Example.welcome' );
 		}
 	}
 
@@ -110,6 +108,12 @@ class Hooks implements
 	 * @param array &$content_navigation
 	 */
 	public function onSkinTemplateNavigation__Universal( $skin, &$content_navigation ): void {
+		if ( !$this->permissionManager->userCan( 'edit', $skin->getUser(), $skin->getTitle() ) ) {
+			// Hide our link if user cannot edit (e.g. user is blocked, page is protected,
+			// or logged-out on wikis with restricted editing).
+			return;
+		}
+
 		$action = $skin->getRequest()->getText( 'action' );
 
 		if ( $skin->getTitle()->getNamespace() !== NS_SPECIAL ) {

@@ -1,13 +1,9 @@
 {
+	"root": true,
 	"extends": [
+		"wikimedia/server",
 		"wikimedia/mocha"
 	],
-	"parserOptions": {
-		"ecmaVersion": 2017
-	},
-	"env": {
-		"es6": true
-	},
 	"rules": {
 		"camelcase": "off",
 		"mocha/no-setup-in-describe": "off"

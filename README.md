@@ -17,8 +17,8 @@ This extension implements the **[recommended entry points](https://www.mediawiki
 
 Before you can test and build code locally, you need:
 
-* PHP 7.1, or later. (with [Composer](https://getcomposer.org/))
-* [Node.js](https://nodejs.org/en/) 10, or later. (with [npm](https://nodejs.org/en/download/package-manager/))
+* PHP with [Composer](https://getcomposer.org/)
+* [Node.js](https://nodejs.org/en/) with [npm](https://nodejs.org/en/download/package-manager/)
 
 ### PHP
 
@@ -45,3 +45,13 @@ Now, run `npm test` to run the automated front-end code checks..
 ```bash
 git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/examples.git
 ```
+
+## Known issues
+
+* `TODO` comments in this repo are left on purpose.
+
+  You're welcome to [follow the excercises](https://www.mediawiki.org/wiki/User:Krinkle/MediaWiki_Introduction_2023) and try to fix these locally, save it as patch,
+  and upload such commit as a patch on Gerrit.
+
+  However, please do not merge such patches, so that the next person can
+  follow the excercise too.

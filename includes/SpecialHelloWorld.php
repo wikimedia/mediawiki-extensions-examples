@@ -9,29 +9,27 @@ namespace MediaWiki\Extension\Example;
 
 class SpecialHelloWorld extends \SpecialPage {
 
-	/**
-	 * Initialize the special page.
-	 */
 	public function __construct() {
-		// A special page should at least have a name.
-		// We do this by calling the parent class (the SpecialPage class)
-		// constructor method with the name as first and only parameter.
+		// Each special page must have a canonical name.
+		// This is passed to the parent class as one and only required parameter.
 		parent::__construct( 'HelloWorld' );
 	}
 
 	/**
-	 * Shows the page to the user.
-	 * @param string $sub The subpage string argument (if any).
-	 *  [[Special:HelloWorld/subpage]].
+	 * Run your code here and render content to the browser.
+	 *
+	 * @param string $sub Optional subpage in the title, as in [[Special:HelloWorld/subpage]].
 	 */
 	public function execute( $sub ) {
 		$out = $this->getOutput();
 
 		$out->setPageTitleMsg( $this->msg( 'example-helloworld' ) );
 
-		// Parses message from .i18n.php as wikitext and adds it to the
-		// page output.
+		// Gets localisastion message from /i18n/ directory, parses it as wikitext,
+		// and adds the HTML to the page output.
 		$out->addWikiMsg( 'example-helloworld-intro' );
+
+		// TODO (README.md): Don't forget to say goodbye!
 	}
 
 	/** @inheritDoc */

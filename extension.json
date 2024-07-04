@@ -130,11 +130,9 @@
 			"class": "MediaWiki\\Extension\\Example\\RestApiExample"
 		}
 	],
-	"ResourceFileModulePaths": {
-		"localBasePath": "modules/"
-	},
 	"ResourceModules": {
 		"ext.Example.welcome": {
+			"localBasePath": "resources/ext.Example.welcome",
 			"dependencies": [
 				"mediawiki.util",
 				"mediawiki.user",
@@ -152,11 +150,10 @@
 				"example-welcome-title-user"
 			],
 			"styles": [
-				"ext.Example.welcome/styles.css"
+				"styles.css"
 			],
-			"scripts": [
-				"ext.Example.welcome/index.js",
-				"ext.Example.welcome/init.js"
+			"packageFiles": [
+				"welcome.js"
 			]
 		}
 	},
