@@ -1,3 +1,6 @@
+// Example code for Selenium/How-to/Create the first test in a repository
+// https://www.mediawiki.org/wiki/Selenium/How-to/Create_the_first_test_in_a_repository
+
 'use strict';
 
 const { config } = require( 'wdio-mediawiki/wdio-defaults.conf.js' );
