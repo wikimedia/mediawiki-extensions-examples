@@ -10,23 +10,11 @@
 /**
  * Map from Date#getDay number to weekday localisation message key.
  *
- * TODO (README.md): This shows the wrong day. Why?
- *
  * @see https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date/getDay
  */
 const DAY_MAP = [ 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday' ];
 
 const welcome = {
-	init: function () {
-		// Use the current date
-		const $box = welcome.createBox( mw.user.isNamed() ? mw.user.getName() : null, new Date() );
-
-		// Ask jQuery to invoke this callback function once the document is ready.
-		// See also <https://api.jquery.com/jQuery>.
-		$( () => {
-			$( 'h1' ).first().after( $box );
-		} );
-	},
 
 	/**
 	 * @param {string|null} userName Name of registered and logged-in user, or null if logged-out
@@ -34,8 +22,12 @@ const welcome = {
 	 * @return {jQuery}
 	 */
 	createBox: function ( userName, date ) {
-		// Get theassociated color for the date's day
+		// Get the associated day name and day color for the given date
+		//
+		// TODO (README.md): This shows the wrong day. Why?
+		//
 		const dayKey = DAY_MAP[ date.getDay() ];
+
 		const color = welcome.getColorByDate( dayKey );
 
 		const $box = $( '<div class="mw-welcome-bar"></div>' ).text(
@@ -68,6 +60,17 @@ const welcome = {
 		}
 
 		return mw.config.get( 'wgExampleWelcomeColorDefault' );
+	},
+
+	init: function () {
+		// Use the current date
+		const $box = welcome.createBox( mw.user.isNamed() ? mw.user.getName() : null, new Date() );
+
+		// Ask jQuery to invoke this callback function once the document is ready.
+		// See also <https://api.jquery.com/jQuery>.
+		$( () => {
+			$( 'h1' ).first().after( $box );
+		} );
 	}
 };
 
