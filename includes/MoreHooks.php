@@ -42,6 +42,13 @@ class MoreHooks implements
 	 * @param DatabaseUpdater $updater
 	 */
 	public function onLoadExtensionSchemaUpdates( $updater ) {
-		$updater->addExtensionTable( 'example_note', dirname( __DIR__ ) . '/sql/add-example_note.sql' );
+		$dbType = $updater->getDB()->getType();
+		$dir = __DIR__ . '/../sql';
+
+		if ( $dbType !== 'mysql' ) {
+			$dir .= "/$dbType";
+		}
+
+		$updater->addExtensionTable( 'example_note', "$dir/tables-generated.sql" );
 	}
 }

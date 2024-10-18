@@ -1,0 +1,37 @@
+[
+	{
+		"name": "example_note",
+		"columns": [
+			{
+				"name": "exnote_id",
+				"comment": "Unique ID to identify each note",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull": true, "autoincrement": true }
+			},
+			{
+				"name": "exnote_user",
+				"comment": "Foreign key to user.user_id",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull": true }
+			},
+			{
+				"name": "exnote_page",
+				"comment": "Key to page.page_id",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull": true }
+
+			},
+			{
+				"name": "exnote_value",
+				"comment": "Note text",
+				"type": "blob",
+				"options": { "notnull": false }
+			}
+		],
+		"indexes": [
+			{ "name": "exnote_user_page", "columns": [ "exnote_user", "exnote_page" ], "unique": false },
+			{ "name": "exnote_page_user", "columns": [ "exnote_page", "exnote_user" ], "unique": false }
+		],
+		"pk": [ "exnote_id" ]
+	}
+]
