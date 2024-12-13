@@ -25,7 +25,7 @@ class SpecialHelloWorld extends \SpecialPage {
 
 		$out->setPageTitleMsg( $this->msg( 'example-helloworld' ) );
 
-		// Gets localisastion message from /i18n/ directory, parses it as wikitext,
+		// Gets localisation message from /i18n/ directory, parses it as wikitext,
 		// and adds the HTML to the page output.
 		$out->addWikiMsg( 'example-helloworld-intro' );
 
