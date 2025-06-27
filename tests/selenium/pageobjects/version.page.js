@@ -1,9 +1,7 @@
 // Example code for Selenium/How-to/Create the first test in a repository
 // https://www.mediawiki.org/wiki/Selenium/How-to/Create_the_first_test_in_a_repository
 
-'use strict';
-
-const Page = require( 'wdio-mediawiki/Page' );
+import Page from 'wdio-mediawiki/Page.js';
 
 // this is just a sample on how to create a page
 class VersionPage extends Page {
@@ -18,4 +16,4 @@ class VersionPage extends Page {
 	}
 }
 
-module.exports = new VersionPage();
+export default new VersionPage();
