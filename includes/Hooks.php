@@ -69,7 +69,6 @@ class Hooks implements
 	 * @param string $magicWordId
 	 * @param string &$ret
 	 * @param PPFrame $frame
-	 *
 	 */
 	public function onParserGetVariableValueSwitch( $parser, &$cache, $magicWordId, &$ret, $frame ) {
 		if ( $magicWordId === 'myword' ) {
