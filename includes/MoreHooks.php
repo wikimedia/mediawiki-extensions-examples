@@ -10,20 +10,9 @@ namespace MediaWiki\Extension\Example;
 use DatabaseUpdater;
 
 class MoreHooks implements
-	\MediaWiki\Hook\GetMagicVariableIDsHook,
-	\MediaWiki\Hook\MagicWordwgVariableIDsHook,
+	\MediaWiki\Parser\Hook\GetMagicVariableIDsHook,
 	\MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook
 {
-
-	/**
-	 * MagicWordwgVariableIDsHook is registered as deprecated in core.
-	 * We acknowledge deprecation in extension.json, so this handler will not be called.
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/MagicWordwgVariableIDs
-	 * @param string[] &$magicWordsIds
-	 */
-	public function onMagicWordwgVariableIDs( &$magicWordsIds ) {
-		$magicWordsIds[] = 'deprecatedmyword';
-	}
 
 	/**
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/GetMagicVariableIDs

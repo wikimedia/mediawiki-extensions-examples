@@ -106,10 +106,6 @@
 		"ParserGetVariableValueSwitch": "handleHooks",
 		"SkinTemplateNavigation::Universal": "handleHooks",
 		"ResourceLoaderGetConfigVars": "handleHooks",
-		"MagicWordwgVariableIDs": {
-			"handler": "handleMoreHooks",
-			"deprecated": true
-		},
 		"GetMagicVariableIDs": "handleMoreHooks",
 		"LoadExtensionSchemaUpdates": {
 			"handler": "handleMoreHooks"
