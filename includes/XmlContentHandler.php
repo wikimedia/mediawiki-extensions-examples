@@ -164,6 +164,6 @@ class XmlContentHandler extends TextContentHandler {
 		}
 
 		$output->clearWrapperDivClass();
-		$output->setRawText( $html );
+		$output->setContentHolderText( $html );
 	}
 }
